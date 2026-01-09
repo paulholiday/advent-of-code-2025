@@ -22,21 +22,31 @@ public class GiftShop {
 
             boolean foundInvalidID = false;
 
-            if (idToValidate.length() % 2 == 0 && (matchingSections(idToValidate, 2) || allDigitsMatch(idToValidate))) {
+            if (idToValidate.length() % 7 == 0 && matchingSections(idToValidate, 7)) {
                 sumOfInvalidIDs += currentId;
                 foundInvalidID = true;
             }
 
-//            //divide by 5 then check matching fifths
-//            if (!foundInvalidID && idToValidate.length() % 5 == 0 && matchingFifths(idToValidate)) {
-//                sumOfInvalidIDs += currentId;
-//                foundInvalidID = true;
-//            }
-//
-//            // divide by 3 then check matching thirds
-//            if (!foundInvalidID && idToValidate.length() % 3 == 0) {
-//                sumOfInvalidIDs += currentId;
-//            }
+            //divide by 5 then check matching fifths
+            if (!foundInvalidID && idToValidate.length() % 5 == 0 && matchingSections(idToValidate, 5)) {
+                sumOfInvalidIDs += currentId;
+                foundInvalidID = true;
+            }
+
+            if (!foundInvalidID && idToValidate.length() % 4 == 0 && matchingSections(idToValidate, 4)) {
+                sumOfInvalidIDs += currentId;
+                foundInvalidID = true;
+            }
+
+            // divide by 3 then check matching thirds
+            if (!foundInvalidID && idToValidate.length() % 3 == 0 && matchingSections(idToValidate, 3)) {
+                sumOfInvalidIDs += currentId;
+                foundInvalidID = true;
+            }
+
+            if (!foundInvalidID && idToValidate.length() % 2 == 0 && (matchingSections(idToValidate, 2) || allDigitsMatch(idToValidate))) {
+                sumOfInvalidIDs += currentId;
+            }
 
             currentId++;
         }
